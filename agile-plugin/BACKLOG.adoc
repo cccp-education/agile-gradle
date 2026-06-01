@@ -1,0 +1,201 @@
+= BACKLOG — Agile Gradle (Atlanta)
+:toc:
+
+_Date création_ : 2026-06-01
+_Version_ : 0.1.0-SNAPSHOT
+
+'''
+== Vision Produit
+
+Un plugin Gradle N4 qui **pilote les 7 ateliers de cadrage agile assistés par IA**
+et **supervise l'avancement du workspace** (backlog, sprints, vélocité, jalons).
+
+L'IA (deepseek-v4-pro) ne remplace pas le chef de projet — elle facilite chaque
+atelier en posant les bonnes questions, structurant les réponses et générant
+les livrables. Le humain décide, l'IA cadroit.
+
+Méthode de cadrage : 7 ateliers (source : `0054_memo_cadrage_post.adoc`).
+
+'''
+== Les 7 Ateliers de Cadrage — Détaillés
+
+=== Atelier 1 : Vision
+
+_QQOQCP + Product Vision Board_
+
+L'IA guide le remplissage des 5 colonnes du Product Vision Board :
+- Target Group (qui ?)
+- Needs (5 besoins principaux)
+- Product (5 fonctionnalités clés)
+- Business Goal (critères de succès)
+- Vision (une phrase)
+
+Livrable : `vision.adoc`
+
+=== Atelier 2 : Personas / Parcours utilisateurs
+
+L'IA génère des gabarits de personas et pose les 3 questions par persona :
+- Qui va utiliser mon service ? (Cible)
+- Que veut-il faire ? (But)
+- Comment va-t-il faire ? (Parcours Utilisateur)
+
+Livrable : `personas.adoc`
+
+=== Atelier 3 : Zoning / Storyboard / Sitemap
+
+L'IA suggère une structure d'information :
+- Zoning (découpage visuel)
+- Storyboard (scénarios navigation)
+- Sitemap (arborescence)
+
+Livrable : `zoning-sitemap.adoc`
+
+=== Atelier 4 : Wireframe / Moodboard
+
+L'IA assiste la définition :
+- Wireframes (maquettes fonctionnelles)
+- Moodboard (direction créative, inspirations)
+
+Livrable : `wireframes.adoc`
+
+=== Atelier 5 : Story Mapping / User Stories
+
+L'IA assiste la construction du story mapping :
+- Génération de user stories depuis les personas/ateliers 1-2
+- Format : « En tant que <persona>, je veux <objectif> afin que <raison> »
+- Priorisation dans le story mapping
+
+Livrable : `story-mapping.adoc`
+
+=== Atelier 6 : Backlog
+
+L'IA consolide les US en backlog structuré :
+- EPICs, features, user stories
+- Priorisation (MoSCoW ou valeur/effort)
+- Dépendances croisées
+
+Livrable : `backlog.adoc`
+
+=== Atelier 7 : Technique et Architecture
+
+L'IA suggère une architecture cohérente :
+- Stack technique (alignée sur l'écosystème workspace)
+- Contraintes non-fonctionnelles
+- Pattern d'architecture (plugin Gradle N2/N3/N4)
+
+Livrable : `architecture.adoc`
+
+'''
+== User Stories
+
+=== US-AG-01 — En tant que chef de projet, je veux lancer un atelier de cadrage assisté par IA
+
+*Priorité* : P1
+*EPIC* : AGL-2
+
+.Valeur
+Gain de temps massif : l'IA pose les bonnes questions et structure les réponses,
+le chef de projet se concentre sur les décisions.
+
+.Critères d'acceptation
+- `agileWorkshop --atelier=1` lance l'atelier Vision avec prompts IA séquentiels
+- L'IA pose les questions du QQOQCP une par une
+- Les réponses sont structurées et écrites dans un livrable AsciiDoc
+- Le format de sortie est cohérent entre les 7 ateliers
+- L'humain peut reprendre, modifier, enrichir le livrable à tout moment
+
+=== US-AG-02 — En tant que chef de projet, je veux consulter le backlog cross-borough
+
+*Priorité* : P1
+*EPIC* : AGL-3
+
+.Valeur
+Vue consolidée de tous les EPICs du workspace — priorités, statuts, dépendances.
+
+.Critères d'acceptation
+- `agileBacklog` parcourt les metadata.json des 15 boroughs
+- Les EPICs sont listés avec statut (✅/en cours/à faire), priorité, borough
+- Les dépendances DAG sont vérifiées (dépendance non satisfaite = ⚠️)
+- La sortie est en table AsciiDoc consultable en console
+
+=== US-AG-03 — En tant que chef de projet, je veux un rapport de sprint
+
+*Priorité* : P1
+*EPIC* : AGL-3
+
+.Valeur
+Suivi de la vélocité et des sessions réalisées par borough.
+
+.Critères d'acceptation
+- `agileSprint` génère un rapport de la période en cours
+- Sessions réalisées, vélocité (sessions/semaine), tendances
+- Blocages détectés automatiquement (dépendances non satisfaites)
+
+=== US-AG-04 — En tant que chef de projet, je veux piloter le cadrage d'un nouveau plugin en 7 ateliers
+
+*Priorité* : P0
+*EPIC* : AGL-2
+
+.Valeur
+Méthode reproductible : chaque nouveau plugin est cadré via les 7 ateliers,
+génération de livrables cohérents et traçables.
+
+.Critères d'acceptation
+- Les 7 ateliers sont séquentiels (chaque atelier enrichit les précédents)
+- L'IA détecte les incohérences entre ateliers (vision vs backlog, personas vs US)
+- Les livrables sont stockés dans le borough concerné
+- Le processus est reproductible pour tout nouveau borough
+
+=== US-AG-05 — En tant que chef de projet, je veux un dashboard HTML de l'avancement MVP0
+
+*Priorité* : P2
+*EPIC* : AGL-4
+
+.Valeur
+Vue synthétique de la progression vers le jalon MVP0 Graal.
+
+.Critères d'acceptation
+- `agileDashboard` génère une page HTML avec indicateurs clés
+- EPICs terminés/total par borough, vélocité, blocages
+- Jalon critique avec date estimée vs planifiée
+
+=== US-AG-06 — En tant que chef de projet, je veux suivre la vélocité par borough
+
+*Priorité* : P2
+*EPIC* : AGL-3
+
+.Valeur
+Identifier les boroughs actifs vs en sommeil pour ajuster les priorités.
+
+.Critères d'acceptation
+- `agileVelocity` affiche le nombre de sessions par borough sur la période
+- Tendances (hausse, stable, baisse)
+- Boroughs sans activité récente signalés
+
+'''
+== Dette Technique
+
+[cols="1,5,2", options="header"]
+|===
+| ID | Description | Priorité
+| DT-01 | Aucune — projet neuf, zéro dette | -
+|===
+
+'''
+== Risques
+
+[cols="1,3,2,2", options="header"]
+|===
+| ID | Risque | Impact | Probabilité
+| R-01 | Coût tokens LLM pour les 7 ateliers par nouveau borough | Moyen | Haute
+| R-02 | Qualité des suggestions IA — hallucinations possibles | Moyen | Moyenne
+| R-03 | métadata.json incohérents entre boroughs | Bloquant | Faible
+| R-04 | Les 7 ateliers sont trop lourds pour un petit plugin | Faible | Faible
+|===
+
+== Notes
+
+* Méthode validée : le borough Long Island (IJ-0→IJ-7) a été cadré via 7 ateliers agiles — même pattern
+* Source de la méthode : `0054_memo_cadrage_post.adoc`
+* Le plugin complète South Central (workspace-gradle N4) : agile = pilotage, workspace = provisionnement
+* Priorité MVP0 : ateliers cadrage assistés > dashboard > vélocité

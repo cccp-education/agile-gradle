@@ -1,0 +1,122 @@
+= AGENT.adoc — Agile Gradle
+
+_Produit_ : Plugin Gradle de pilotage agile assisté par IA — 7 ateliers de cadrage + backlog + sprints
+_Licence_ : Apache 2.0 (OSS)
+_DAG_ : N4 — Plugin Gradle de pilotage transverse (orchestration métier)
+_Dépendance_ : runner-gradle (compileOnly, lecture état DAG), workspace-gradle (lecture état workspace), langchain4j (LLM prompting)
+
+== Principe
+
+Le plugin `agile` implémente le **pilotage agile du workspace** assisté par IA,
+en s'appuyant sur la méthodologie des **7 ateliers de cadrage**
+(source : `0054_memo_cadrage_post.adoc`).
+
+L'IA (deepseek-v4-pro via langchain4j) assiste chaque atelier en :
+- Posant les bonnes questions au bon moment
+- Structurant les réponses dans le format attendu
+- Générant les livrables AsciiDoc de chaque atelier
+- Détectant les incohérences entre ateliers (vision vs backlog, personas vs US)
+
+Les 7 ateliers de cadrage :
+
+=== Atelier 1 : Vision
+QQOQCP (Qui, Quoi, Où, Quand, Comment, Pourquoi) + Product Vision Board
+(Target Group → Needs → Product → Business Goal → Vision en une phrase).
+
+=== Atelier 2 : Personas / Parcours utilisateurs
+Définir les personas cibles et leurs parcours :
+Qui utilise ? → Que veut-il faire ? → Comment le fait-il ?
+
+=== Atelier 3 : Zoning / Storyboard / Sitemap
+Architecture de l'information visuelle : zones, flux, arborescence.
+
+=== Atelier 4 : Wireframe / Moodboard
+Maquettes fonctionnelles + direction créative.
+
+=== Atelier 5 : Story Mapping / User Stories
+Cartographie des user stories + priorisation :
+« En tant que <persona>, je veux <objectif> afin que <raison>. »
+
+=== Atelier 6 : Backlog
+Construction et priorisation du backlog produit (Atlassian method).
+
+=== Atelier 7 : Technique et Architecture
+Stack technique, architecture, contraintes, non-fonctionnels.
+
+Pipeline complet :
+  Prompt atelier ──→ IA (LLM) ──→ questions structurantes ──→ réponses humain ──→ livrable AsciiDoc ──→ enrichissement cross-atelier
+
+Cas d'usage MVP0 :
+- Cadrage assisté d'un nouveau plugin Gradle (ex: document-gradle a été cadré avec 7 ateliers)
+- Tableau de bord EPICs cross-borough (avancement %, statut, priorité)
+- Rapport de sprint : sessions réalisées, vélocité, tendances
+- Détection de blocages : dépendances non satisfaites, EPICs en retard
+- Génération du rapport de jalon MVP0
+
+== Règles Absolues
+
+=== 1. COMMITS/GIT — INTERDICTION FORMELLE sans permission
+=== 2. PUBLISH — INTERDICTION FORMELLE sans permission
+=== 3. DAG N4 — consomme N3 (runner-gradle) et N4 (workspace-gradle), jamais importé par N3/N2
+=== 4. PROCEDURE DE FIN DE SESSION — 6 ETAPES OBLIGATOIRES (voir `.agents/SESSION_PROCEDURE.adoc`)
+=== 5. HOOK OUVERTURE — Checklist `.agents/SESSION_CHECKLIST.adoc` obligatoire
+=== 6. ZERO secret/token/api key en dur dans le code source
+=== 7. LECTURE SEULE — le plugin lit l'état du workspace sans le modifier (sauf livrables générés)
+
+== Tâches Principales
+
+  ./gradlew agileWorkshop        → lancer un atelier de cadrage assisté par IA (1 à 7)
+  ./gradlew agileBacklog         → lister tous les EPICs avec statut, priorité, dépendances
+  ./gradlew agileSprint          → générer le rapport de sprint courant
+  ./gradlew agileVelocity        → calculer et afficher la vélocité par borough
+  ./gradlew agileMilestone       → état d'avancement vers le jalon MVP0
+  ./gradlew agileDashboard       → générer un dashboard HTML de l'avancement global
+  ./gradlew check                → tous les tests (unitaire + fonctionnel)
+
+== Tests
+
+Le projet utilise JUnit5 et GradleTestKit.
+Toute modification de code source DOIT passer `./gradlew check`
+(sauf permission contraire).
+
+== Stack
+
+- Kotlin — DSL Gradle
+- langchain4j — LLM prompting (deepseek-v4-pro) pour assistance ateliers
+- Jackson — parsing des metadata.json de chaque borough
+- AsciidoctorJ — génération des livrables et rapports AsciiDoc/HTML
+- runner-gradle — dépendance compileOnly, lecture état DAG N3
+- workspace-gradle — dépendance compileOnly, lecture état workspace N4
+
+== Les 7 Ateliers — Tâches et Livrables
+
+[cols="1,3,3", options="header"]
+|===
+| Atelier | Tâche IA | Livrable
+| 1. Vision | QQOQCP + Product Vision Board | `vision.adoc`
+| 2. Personas | Questions ciblées par persona | `personas.adoc`
+| 3. Zoning | Structure visuelle suggestions | `zoning-sitemap.adoc`
+| 4. Wireframe | Maquette fonctionnelle prompts | `wireframes.adoc`
+| 5. Story Mapping | US generation + priorisation | `story-mapping.adoc`
+| 6. Backlog | Construction backlog structuré | `backlog.adoc`
+| 7. Architecture | Contraintes + stack suggestions | `architecture.adoc`
+|===
+
+== Dashboard MVP0 — Indicateurs Clés
+
+[cols="2,3"]
+|===
+| Indicateur | Source
+| EPICs terminés / total | metadata.json (tous boroughs)
+| Sessions réalisées | SESSIONS_HISTORY.adoc (chaque borough)
+| Vélocité (sessions/semaine) | calcul cross-borough
+| Blocages actifs | dépendances DAG non satisfaites
+| Jalon critique | date livraison estimée vs planifiée
+| Ateliers cadrage complétés | livrables .adoc par projet
+|===
+
+== Ne remplace PAS opencode
+
+Le plugin est invoqué PAR opencode (via tool use).
+L'IA assiste le cadrage, mais les décisions de priorisation,
+les choix architecturaux et les ajustements de planning restent humains.

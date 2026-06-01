@@ -1,0 +1,26 @@
+= SESSION_PROCEDURE — agile-gradle
+
+== Procédure de Fin de Session — 6 Étapes Obligatoires
+
+. *Rapport de session* — Créer `.agents/sessions/NNN-sujet.adoc`
+. *Mise à jour PROMPT_REPRISE.adoc* — Contexte de reprise session N+1 (max 70 lignes)
+. *Mise à jour INDEX.adoc* — Numéro de session, roadmap, statut EPICs
+. *Archivage COMPLETED_TASKS_ARCHIVE.adoc* — Archiver les tâches terminées
+. *Vérification* — `git status`, absence de secrets, build compile
+. *Tests* — `.agents/TEST_COVERAGE_ANALYSIS.adoc` (si tests modifiés)
+
+== Commandes de Vérification
+
+[source,shell]
+----
+git status
+grep -r "TOKEN\|SECRET\|PASSWORD\|API_KEY\|gho_\|ghp_" --include="*.kts" --include="*.properties" --include="*.yml"
+./gradlew compileKotlin
+----
+
+== Rappels
+
+* Plugin N4 — pilote le workspace en lecture seule
+* 7 ateliers de cadrage assistés par IA (source : 0054_memo_cadrage_post.adoc)
+* Langchain4j pour les prompts LLM (deepseek-v4-pro)
+* Aucun commit sans permission explicite
