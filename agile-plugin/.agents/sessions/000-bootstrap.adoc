@@ -1,0 +1,57 @@
+= Session 000 — Bootstrap AGL-0
+:date: 2026-06-01
+:type: bootstrap
+:score: 10/10
+:epic: AGL-0 — Bootstrap Gouvernance + Cadrage Architecture
+:borough: Atlanta (15ème, N4)
+:duree: 1 session
+
+== Objectif
+
+Créer le borough agile-gradle avec gouvernance agent complète et cadrage architecture.
+
+== Livrables
+
+=== AGL-0a — Structure projet
+- `agile-gradle/` — root project
+- `agile-plugin/` — plugin subproject
+- `settings.gradle.kts` — Gradle multi-project (root + agile-plugin)
+- `build.gradle.kts` — root build script
+- `.gitignore` — ignores Gradle/Kotlin standard
+- `LICENSE` — Apache 2.0
+
+=== AGL-0b — Gouvernance agent (.agents/)
+- `AGENT.adoc` — 7 règles absolues, 7 ateliers détaillés, stack, tâches
+- `.agents/INDEX.adoc` — roadmap AGL-0→AGL-5, 5 EPICs, portefeuille 15 boroughs, sessions
+- `.agents/SESSION_CHECKLIST.adoc` — hooks ouverture/fermeture
+- `.agents/SESSION_PROCEDURE.adoc` — procédure 6 étapes fin de session
+- `.agents/SESSIONS_HISTORY.adoc` — historique sessions
+- `.agents/TEST_COVERAGE_ANALYSIS.adoc` — placeholder zéro test
+- `BACKLOG.adoc` — vision produit, 6 user stories, 7 ateliers détaillés, risques
+- `PROMPT_REPRISE.adoc` — contexte de reprise session
+
+=== AGL-0c — Mise à jour AGENTS.adoc
+- Atlanta ajouté comme 15ème borough dans `AGENTS.adoc` racine
+- Chaîne de valeur intégrée (cadrage → tickets → code → review → merge)
+
+=== Git + Remote
+- `git init` + `git add -A` + `git commit -m "AGL-0: Bootstrap agile-gradle"`
+- Remote GitHub : https://github.com/cheroliv/agile-gradle
+- Branch `main`, push initial effectué
+
+== EPIC AGL-0 — TERMINÉ
+
+Tous les sous-EPICs livrés :
+- AGL-0a ✅ Structure projet
+- AGL-0b ✅ Gouvernance agent complète
+- AGL-0c ✅ AGENTS.adoc root mis à jour
+
+== Prochaine session
+
+Session 001 — Implémentation plugin Gradle stub (java-gradle-plugin, Kotlin, langchain4j).
+
+== Vérifications
+
+- git status : clean
+- Secrets : 0 trouvé
+- Aucun test (bootstrap uniquement)

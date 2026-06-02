@@ -1,15 +1,45 @@
 = PROMPT_REPRISE — agile-gradle (Atlanta)
+:session: 001
+:date-cible: à déterminer
+:epic: AGL-1 — Plugin Gradle stub + build structure
 
 == Mission en cours
 
-Session 000 — Bootstrap gouvernance + cadrage architecture.
+Session 001 — Implémentation plugin Gradle stub (AGL-1).
 
-== État actuel
+== Contexte
 
-- Structure de projet créée : `agile-gradle/` + `agile-plugin/`
-- Gouvernance : AGENT.adoc, .agents/INDEX.adoc, SESSION_CHECKLIST, SESSION_PROCEDURE, BACKLOG.adoc
-- AGENTS.adoc mis à jour (15ème borough Atlanta)
-- Prochaine étape : Session 001 — Implémentation plugin Gradle stub
+Session 000 (2026-06-01) : Bootstrap gouvernance + cadrage architecture.
+AGL-0 TERMINÉ. Tous les livrables créés (AGENT.adoc, INDEX.adoc, BACKLOG.adoc,
+SESSION_CHECKLIST, SESSION_PROCEDURE, SESSIONS_HISTORY, PROMPT_REPRISE).
+Repo GitHub public + Apache 2.0 : https://github.com/cheroliv/agile-gradle.
+
+== État des EPICs
+
+AGL-0 ✅ Bootstrap (session 000)
+AGL-1 → EN COURS — Plugin Gradle stub
+AGL-2 → À faire — 7 ateliers cadrage IA
+AGL-3 → À faire — Backlog + Sprint tracking
+AGL-4 → À faire — Dashboard + Jalons
+AGL-5 → À faire — CI + publication
+
+== Prochaine étape détaillée
+
+1. `agile-plugin/build.gradle.kts` avec :
+   - `java-gradle-plugin` + `kotlin("jvm")`
+   - Dépendances : langchain4j, Jackson, AsciidoctorJ (baseline)
+   - compileOnly : runner-gradle, workspace-gradle
+   - Plugin descriptor : `education.cccp.agile`
+
+2. Structure source Kotlin :
+   - `AgilePlugin.kt` — point d'entrée
+   - `AgileExtension.kt` — DSL configuration
+
+3. `agile-plugin/settings.gradle.kts` — pluginManagement
+
+4. Ajouter `./gradlew tasks` support
+
+5. Vérifier compilation : `./gradlew compileKotlin`
 
 == Règles absolues
 
@@ -18,3 +48,19 @@ Session 000 — Bootstrap gouvernance + cadrage architecture.
 3. DAG N4 — consomme N3/N4, jamais importé par N3/N2
 4. ZERO secret/token/api key en dur
 5. LECTURE SEULE du workspace (sauf livrables générés)
+6. Procédure 6 étapes fin de session obligatoire
+7. Hook ouverture : lire AGENT.adoc → INDEX.adoc → git status
+
+== Dépendances
+
+- runner-gradle (compileOnly, lecture état DAG N3)
+- workspace-gradle (compileOnly, lecture état workspace N4)
+- langchain4j 1.14.1+ (LLM prompting deepseek-v4-pro)
+- Jackson (parsing metadata.json)
+- AsciidoctorJ (génération livrables)
+
+== Notes
+
+- Source méthode 7 ateliers : `0054_memo_cadrage_post.adoc`
+- Pattern existant : voir `foundry/public/capsule-gradle/` pour structure plugin N2
+- Le plugin lit, n'écrit pas (sauf livrables générés dans le borough)

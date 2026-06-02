@@ -5,9 +5,9 @@ _Règles absolues_ : voir `AGENT.adoc`
 _DAG_ : N4 — Plugin Gradle de pilotage agile assisté par IA
 _Dépendance N4_ : runner-gradle (compileOnly), workspace-gradle (compileOnly), langchain4j (LLM)
 
-_Dernière mise à jour_ : 2026-06-01 (Session 000 — Bootstrap)
+_Dernière mise à jour_ : 2026-06-01 (Session 000 clôturée)
 _Session terminée_ : 000 — Bootstrap gouvernance + cadrage architecture
-_Prochaine session_ : 001 — Implémentation plugin Gradle stub
+_Prochaine session_ : 001 — Implémentation plugin Gradle stub (AGL-1)
 
 '''
 == RÈGLES ABSOLUES (résumé)
@@ -38,7 +38,7 @@ _Prochaine session_ : 001 — Implémentation plugin Gradle stub
 |===
 | EPIC | Description | Statut | Priorité
 | AGL-0 | Bootstrap gouvernance + cadrage architecture | ✅ TERMINÉ (session 000) | P0
-| AGL-1 | Plugin Gradle stub + build structure | À faire | P0
+| AGL-1 | Plugin Gradle stub + build structure | 🔜 Prochaine session (001) | P0
 | AGL-2 | Ateliers de cadrage IA — tâche agileWorkshop (7 ateliers, prompts LLM) | À faire | P1
 | AGL-3 | Backlog + Sprint tracking — agileBacklog, agileSprint, agileVelocity | À faire | P1
 | AGL-4 | Dashboard + Jalons — agileDashboard, agileMilestone | À faire | P2
@@ -69,7 +69,7 @@ _Prochaine session_ : 001 — Implémentation plugin Gradle stub
 |===
 
 '''
-== Portefeuille — 15 Boroughs
+== Portefeuille — 18 Boroughs
 
 |===
 | Borough | Projet | DAG | Sessions
@@ -88,6 +88,9 @@ _Prochaine session_ : 001 — Implémentation plugin Gradle stub
 | Chiraq 🟤 | readme-gradle | N2 | 003
 | New Orleans 🟢 | document-gradle | N2 | 000
 | Atlanta | agile-gradle | N4 | 000
+| Harlem | ticket-gradle | N4 | 000
+| Baltimore | review-gradle | N4 | 000
+| Oakland | flow-gradle | N4 | 000
 |===
 
 '''
