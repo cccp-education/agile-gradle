@@ -10,7 +10,7 @@ _Version_ : 0.1.0-SNAPSHOT
 Un plugin Gradle N4 qui **pilote les 7 ateliers de cadrage agile assistés par IA**
 et **supervise l'avancement du workspace** (backlog, sprints, vélocité, jalons).
 
-L'IA (deepseek-v4-pro) ne remplace pas le chef de projet — elle facilite chaque
+L'IA (gpt-oss:120b-cloud) ne remplace pas le chef de projet — elle facilite chaque
 atelier en posant les bonnes questions, structurant les réponses et générant
 les livrables. Le humain décide, l'IA cadroit.
 

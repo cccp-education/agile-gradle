@@ -22,5 +22,5 @@ grep -r "TOKEN\|SECRET\|PASSWORD\|API_KEY\|gho_\|ghp_" --include="*.kts" --inclu
 
 * Plugin N4 — pilote le workspace en lecture seule
 * 7 ateliers de cadrage assistés par IA (source : 0054_memo_cadrage_post.adoc)
-* Langchain4j pour les prompts LLM (deepseek-v4-pro)
+* Langchain4j pour les prompts LLM (gpt-oss:120b-cloud)
 * Aucun commit sans permission explicite

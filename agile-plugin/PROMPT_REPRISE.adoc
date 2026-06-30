@@ -55,7 +55,7 @@ AGL-5 → À faire — CI + publication
 
 - runner-gradle (compileOnly, lecture état DAG N3)
 - workspace-gradle (compileOnly, lecture état workspace N4)
-- langchain4j 1.14.1+ (LLM prompting deepseek-v4-pro)
+- langchain4j 1.14.1+ (LLM prompting gpt-oss:120b-cloud)
 - Jackson (parsing metadata.json)
 - AsciidoctorJ (génération livrables)
 
