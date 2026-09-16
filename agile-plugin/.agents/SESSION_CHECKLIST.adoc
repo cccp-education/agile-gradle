@@ -10,7 +10,7 @@
 
 == Pendant la session
 
-. [ ] Respecter Règle 1 — AUCUN commit sans permission
+. [ ] Respecter la Règle — Git autorisé (décision 2026-09-17), zéro secret commité
 . [ ] Respecter Règle 2 — AUCUN publish sans permission
 . [ ] Respecter Règle 7 — LECTURE SEULE du workspace (sauf livrables générés)
 . [ ] Respecter Règle 6 — ZERO secret en dur
