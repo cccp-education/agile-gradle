@@ -117,3 +117,7 @@ _Prochaine session_ : 001 — Implémentation plugin Gradle stub (AGL-1)
 |===
 
 Voir aussi : `0054_memo_cadrage_post.adoc` (méthode des 7 ateliers).
+
+== Session 001 — JitPack mirror (CNV-16)
+
+Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. Baseline préexistante cassée (libs non résolu), sans rapport. JitPack : n/a.
