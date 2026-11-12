@@ -43,8 +43,8 @@ AGL-5 → À faire — CI + publication
 
 == Règles absolues
 
-1. COMMITS/GIT — INTERDICTION FORMELLE sans permission
-2. PUBLISH — INTERDICTION FORMELLE sans permission
+1. COMMITS/GIT — AUTORISÉS (décision pilote 2026-11-11)
+2. PUBLISH — ACCORD PILOTE PERMANENT (décisions 2026-10-31 + 2026-11-11)
 3. DAG N4 — consomme N3/N4, jamais importé par N3/N2
 4. ZERO secret/token/api key en dur
 5. LECTURE SEULE du workspace (sauf livrables générés)
