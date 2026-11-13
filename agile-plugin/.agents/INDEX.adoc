@@ -5,9 +5,9 @@ _Règles absolues_ : voir `AGENT.adoc`
 _DAG_ : N4 — Plugin Gradle de pilotage agile assisté par IA
 _Dépendance N4_ : runner-gradle (compileOnly), workspace-gradle (compileOnly), langchain4j (LLM)
 
-_Dernière mise à jour_ : 2026-06-01 (Session 000 clôturée)
-_Session terminée_ : 000 — Bootstrap gouvernance + cadrage architecture
-_Prochaine session_ : 001 — Implémentation plugin Gradle stub (AGL-1)
+_Dernière mise à jour_ : 2026-11-14 (Session 002 — CNV-17 JitPack canal unique)
+_Session terminée_ : 002 — CNV-17 : shim conventions `0.0.17` (JitPack), pas de publication Maven
+_Prochaine session_ : 003 — Implémentation plugin Gradle stub (AGL-1)
 
 '''
 == RÈGLES ABSOLUES (résumé)
@@ -121,3 +121,9 @@ Voir aussi : `0054_memo_cadrage_post.adoc` (méthode des 7 ateliers).
 == Session 001 — JitPack mirror (CNV-16)
 
 Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. Baseline préexistante cassée (libs non résolu), sans rapport. JitPack : n/a.
+
+== Session 002 — CNV-17 : JitPack canal unique
+
+Shim conventions repointé `0.0.17` (N0 `workspace-bom 0.0.136`) ; aucune
+publication Maven (bootstrap), pas de CI. Rapport
+`.agents/sessions/002-cnv-17-jitpack-channel.adoc`.

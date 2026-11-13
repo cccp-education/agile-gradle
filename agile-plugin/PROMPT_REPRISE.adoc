@@ -1,18 +1,20 @@
 = PROMPT_REPRISE — agile-gradle (Atlanta)
-:session: 001
+:session: 003
 :date-cible: à déterminer
 :epic: AGL-1 — Plugin Gradle stub + build structure
 
 == Mission en cours
 
-Session 001 — Implémentation plugin Gradle stub (AGL-1).
+Session 003 — Implémentation plugin Gradle stub (AGL-1).
 
 == Contexte
 
-Session 000 (2026-06-01) : Bootstrap gouvernance + cadrage architecture.
-AGL-0 TERMINÉ. Tous les livrables créés (AGENT.adoc, INDEX.adoc, BACKLOG.adoc,
-SESSION_CHECKLIST, SESSION_PROCEDURE, SESSIONS_HISTORY, PROMPT_REPRISE).
-Repo GitHub public + Apache 2.0 : https://github.com/cheroliv/agile-gradle.
+* Session 000 (2026-06-01) : Bootstrap gouvernance + cadrage architecture (AGL-0 ✅).
+* Session 001 (2026-11-09) : shim JitPack CNV-16 (`0.0.15`).
+* Session 002 (2026-11-14) : **CNV-17 JitPack canal unique** — shim conventions
+  repointé `0.0.17` (N0 `workspace-bom 0.0.136`). Aucune publication Maven
+  (bootstrap), pas de CI. Rapport `.agents/sessions/002-cnv-17-jitpack-channel.adoc`.
+* Repo GitHub public + Apache 2.0 : https://github.com/cheroliv/agile-gradle.
 
 == État des EPICs
 
@@ -44,23 +46,16 @@ AGL-5 → À faire — CI + publication
 == Règles absolues
 
 1. COMMITS/GIT — AUTORISÉS (décision pilote 2026-11-11)
-2. PUBLISH — ACCORD PILOTE PERMANENT (décisions 2026-10-31 + 2026-11-11)
+2. PUBLISH — ACCORD PILOTE PERMANENT ; canal unique **JitPack** pour le public
 3. DAG N4 — consomme N3/N4, jamais importé par N3/N2
 4. ZERO secret/token/api key en dur
 5. LECTURE SEULE du workspace (sauf livrables générés)
 6. Procédure 6 étapes fin de session obligatoire
 7. Hook ouverture : lire AGENT.adoc → INDEX.adoc → git status
 
-== Dépendances
-
-- runner-gradle (compileOnly, lecture état DAG N3)
-- workspace-gradle (compileOnly, lecture état workspace N4)
-- langchain4j 1.14.1+ (LLM prompting gpt-oss:120b-cloud)
-- Jackson (parsing metadata.json)
-- AsciidoctorJ (génération livrables)
-
 == Notes
 
 - Source méthode 7 ateliers : `0054_memo_cadrage_post.adoc`
-- Pattern existant : voir `foundry/public/capsule-gradle/` pour structure plugin N2
 - Le plugin lit, n'écrit pas (sauf livrables générés dans le borough)
+- Le shim JitPack n'est qu'une résolution de build ; il ne rend pas le borough
+  publiable (version de dépôt = tag, règle CNV-17 D2).
